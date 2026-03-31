@@ -1,0 +1,1238 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ArhStack — Startup Risk Audit for Founders</title>
+    <meta name="description" content="ArhStack identifies the gaps in your business thinking before they cost you 6 months and everything you built." />
+    <meta name="robots" content="index, follow" />
+    <meta property="og:title" content="ArhStack — Startup Risk Audit for Founders" />
+    <meta property="og:description" content="ArhStack identifies the gaps in your business thinking before they cost you 6 months and everything you built." />
+    <meta property="og:type" content="website" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --bg: #080808;
+            --white: #ffffff;
+            --g65: #656565;
+            --g40: #3d3d3d;
+            --g20: #1c1c1c;
+            --div: rgba(255, 255, 255, 0.07);
+            --serif: 'Cormorant Garamond', Georgia, serif;
+            --sans: 'Syne', 'Helvetica Neue', Arial, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--white);
+            font-family: var(--sans);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            overflow-x: hidden;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        /* ─── Layout ─── */
+        .wrap {
+            max-width: 1160px;
+            margin: 0 auto;
+            padding: 0 clamp(1.5rem, 5vw, 5rem);
+        }
+
+        section {
+            padding: clamp(5rem, 11vw, 10rem) 0;
+            border-top: 0.5px solid var(--div);
+        }
+
+        /* ─── Header ─── */
+        header {
+            position: fixed;
+            inset: 0 0 auto 0;
+            z-index: 200;
+            background: var(--bg);
+            border-bottom: 0.5px solid transparent;
+            transition: border-color 0.5s ease;
+        }
+
+        header.scrolled {
+            border-color: var(--div);
+        }
+
+        .hdr {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 66px;
+            padding: 0 clamp(1.5rem, 5vw, 5rem);
+        }
+
+        /* ─── Logo ─── */
+        #logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            cursor: default;
+        }
+
+        #logo img {
+            width: 32px;
+            height: 32px;
+            object-fit: contain;
+        }
+
+        #logo span {
+            font-family: var(--sans);
+            font-size: 1rem;
+            font-weight: 700;
+            letter-spacing: 0.07em;
+            color: var(--white);
+        }
+
+        /* ─── Header button ─── */
+        .hdr-btn {
+            font-family: var(--sans);
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--bg);
+            background: var(--white);
+            border: 1px solid var(--white);
+            padding: 0.6rem 1.35rem;
+            cursor: pointer;
+            transition: background 0.22s, color 0.22s;
+        }
+
+        .hdr-btn:hover {
+            background: transparent;
+            color: var(--white);
+        }
+
+        /* ─── Primary button ─── */
+        .btn {
+            display: inline-block;
+            font-family: var(--sans);
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--bg);
+            background: var(--white);
+            border: 1px solid var(--white);
+            padding: 1.05rem 2.4rem;
+            cursor: pointer;
+            transition: background 0.22s, color 0.22s;
+        }
+
+        .btn:hover {
+            background: transparent;
+            color: var(--white);
+        }
+
+        /* ─── Section meta ─── */
+        .smeta {
+            display: flex;
+            align-items: center;
+            gap: 1.25rem;
+            margin-bottom: clamp(2.5rem, 5vw, 4.5rem);
+        }
+
+        .smeta-n {
+            font-family: var(--serif);
+            font-size: 0.9rem;
+            font-weight: 300;
+            color: var(--g40);
+        }
+
+        .smeta-dash {
+            width: 1.5rem;
+            height: 0.5px;
+            background: var(--g40);
+            flex-shrink: 0;
+        }
+
+        .smeta-lbl {
+            font-size: 0.6rem;
+            font-weight: 700;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: var(--g65);
+        }
+
+        /* ─── Typographic helpers ─── */
+        h2 {
+            font-family: var(--serif);
+            font-size: clamp(2rem, 4.5vw, 4.5rem);
+            font-weight: 300;
+            line-height: 1.1;
+            letter-spacing: -0.01em;
+        }
+
+        h2 em,
+        h3 em {
+            font-style: italic;
+        }
+
+        h3 {
+            font-family: var(--serif);
+            font-size: clamp(1.7rem, 3vw, 3rem);
+            font-weight: 300;
+            line-height: 1.2;
+        }
+
+        .bt {
+            font-size: clamp(0.92rem, 1.3vw, 1.05rem);
+            line-height: 1.82;
+            color: var(--g65);
+        }
+
+        /* ═══════════════════════════════════════
+       HERO
+    ═══════════════════════════════════════ */
+        #hero {
+            min-height: 100svh;
+            display: flex;
+            align-items: center;
+            padding-top: 66px;
+            border-top: none;
+            overflow: hidden;
+        }
+
+        .hero-body {
+            width: 100%;
+            padding: clamp(4rem, 9vw, 9rem) 0 clamp(3.5rem, 7vw, 7rem);
+        }
+
+        .hero-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2.75rem;
+        }
+
+        .hero-tag-dash {
+            width: 2rem;
+            height: 0.5px;
+            background: var(--g40);
+        }
+
+        .hero-tag span {
+            font-size: 0.6rem;
+            font-weight: 700;
+            letter-spacing: 0.24em;
+            text-transform: uppercase;
+            color: var(--g65);
+        }
+
+        /* Headline split-word animation */
+        .hero-hl {
+            font-family: var(--serif);
+            font-size: clamp(3rem, 7.2vw, 7.6rem);
+            font-weight: 300;
+            line-height: 1.06;
+            letter-spacing: -0.01em;
+            max-width: 900px;
+            margin-bottom: 2.5rem;
+            overflow: hidden;
+        }
+
+        .hero-hl .line {
+            display: block;
+            overflow: hidden;
+        }
+
+        .hero-hl .line-inner {
+            display: block;
+            transform: translateY(110%);
+            transition: transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .hero-hl .line-inner em {
+            font-style: italic;
+        }
+
+        .hero-hl.active .line-inner {
+            transform: translateY(0);
+        }
+
+        .hero-hl.active .line:nth-child(2) .line-inner {
+            transition-delay: 0.08s;
+        }
+
+        .hero-hl.active .line:nth-child(3) .line-inner {
+            transition-delay: 0.16s;
+        }
+
+        .hero-sub {
+            font-size: clamp(1rem, 1.4vw, 1.1rem);
+            line-height: 1.82;
+            color: var(--g65);
+            max-width: 460px;
+            margin-bottom: 3.5rem;
+            opacity: 0;
+            transform: translateY(16px);
+            transition: opacity 0.75s ease 0.55s, transform 0.75s ease 0.55s;
+        }
+
+        .hero-sub.active {
+            opacity: 1;
+            transform: none;
+        }
+
+        .hero-cta-wrap {
+            opacity: 0;
+            transform: translateY(14px);
+            transition: opacity 0.7s ease 0.75s, transform 0.7s ease 0.75s;
+        }
+
+        .hero-cta-wrap.active {
+            opacity: 1;
+            transform: none;
+        }
+
+        .hero-note {
+            margin-top: 5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            opacity: 0;
+            transition: opacity 0.7s ease 1s;
+        }
+
+        .hero-note.active {
+            opacity: 1;
+        }
+
+        .hero-note-dash {
+            width: 1.5rem;
+            height: 0.5px;
+            background: var(--g40);
+        }
+
+        .hero-note span {
+            font-size: 0.63rem;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--g40);
+        }
+
+        /* ═══════════════════════════════════════
+       PROBLEM
+    ═══════════════════════════════════════ */
+        .prob-intro {
+            display: grid;
+            grid-template-columns: 1fr 1.6fr;
+            gap: clamp(2rem, 5vw, 5rem);
+            align-items: start;
+            margin-bottom: clamp(3rem, 6vw, 5rem);
+        }
+
+        @media (max-width: 740px) {
+            .prob-intro {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .prob-copy>*+* {
+            margin-top: 1.2rem;
+        }
+
+        .big-stat {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: clamp(2rem, 4.5vw, 5rem);
+            align-items: center;
+            padding: clamp(2.25rem, 5vw, 4rem) 0;
+            border-top: 0.5px solid var(--div);
+            border-bottom: 0.5px solid var(--div);
+            margin-bottom: clamp(3rem, 5vw, 4.5rem);
+        }
+
+        @media (max-width: 600px) {
+            .big-stat {
+                grid-template-columns: 1fr;
+                gap: 1.25rem;
+            }
+        }
+
+        .stat-fig {
+            font-family: var(--serif);
+            font-size: clamp(5rem, 11vw, 10rem);
+            font-weight: 300;
+            line-height: 1;
+            letter-spacing: -0.02em;
+            white-space: nowrap;
+        }
+
+        .stat-copy strong {
+            display: block;
+            font-size: clamp(0.95rem, 1.5vw, 1.08rem);
+            font-weight: 600;
+            margin-bottom: 0.55rem;
+        }
+
+        .stat-copy p {
+            font-size: 0.88rem;
+            color: var(--g65);
+            line-height: 1.78;
+            max-width: 420px;
+        }
+
+        .miss-lbl {
+            font-size: 0.6rem;
+            font-weight: 700;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: var(--g65);
+            margin-bottom: 1.5rem;
+        }
+
+        .miss-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        @media (max-width: 840px) {
+            .miss-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 500px) {
+            .miss-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .miss-card {
+            border: 0.5px solid var(--div);
+            padding: 2rem 1.75rem;
+            margin: -0.25px;
+        }
+
+        .miss-n {
+            font-family: var(--serif);
+            font-size: 1.5rem;
+            font-weight: 300;
+            color: var(--g40);
+            display: block;
+            margin-bottom: 1rem;
+        }
+
+        .miss-card h4 {
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-bottom: 0.65rem;
+        }
+
+        .miss-card p {
+            font-size: 0.83rem;
+            color: var(--g65);
+            line-height: 1.75;
+        }
+
+        /* ═══════════════════════════════════════
+       AUDIT
+    ═══════════════════════════════════════ */
+        .audit-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: clamp(3rem, 7vw, 7rem);
+            align-items: start;
+        }
+
+        @media (max-width: 840px) {
+            .audit-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .audit-l h3 {
+            margin-bottom: 2rem;
+        }
+
+        .audit-l .bt+.bt {
+            margin-top: 1.2rem;
+        }
+
+        .domains {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+            margin-top: 2rem;
+        }
+
+        .dom {
+            border: 0.5px solid var(--g40);
+            padding: 0.33rem 0.85rem;
+            font-size: 0.6rem;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--g65);
+        }
+
+        .audit-nums {
+            display: flex;
+            gap: 2.5rem;
+            padding-top: 2rem;
+            margin-top: 2.5rem;
+            border-top: 0.5px solid var(--div);
+        }
+
+        .an .fig {
+            font-family: var(--serif);
+            font-size: 2.2rem;
+            font-weight: 300;
+            line-height: 1;
+            display: block;
+        }
+
+        .an .lbl {
+            font-size: 0.62rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--g40);
+            margin-top: 0.35rem;
+        }
+
+        .dlv-head {
+            font-size: 0.6rem;
+            font-weight: 700;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: var(--g65);
+            margin-bottom: 1.5rem;
+        }
+
+        .dlv-list {
+            list-style: none;
+        }
+
+        .dlv-list li {
+            display: grid;
+            grid-template-columns: 2.25rem 1fr;
+            gap: 1.25rem;
+            padding: 1.6rem 0;
+            border-bottom: 0.5px solid var(--div);
+        }
+
+        .dlv-list li:first-child {
+            border-top: 0.5px solid var(--div);
+        }
+
+        .dlv-n {
+            font-family: var(--serif);
+            font-size: 1.3rem;
+            font-weight: 300;
+            color: var(--g40);
+            line-height: 1.3;
+        }
+
+        .dlv-b strong {
+            display: block;
+            font-size: 0.79rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            margin-bottom: 0.4rem;
+        }
+
+        .dlv-b p {
+            font-size: 0.85rem;
+            color: var(--g65);
+            line-height: 1.74;
+        }
+
+        /* ═══════════════════════════════════════
+       WHY NOT AI
+    ═══════════════════════════════════════ */
+        .pull {
+            border-left: 1px solid var(--div);
+            padding: 1.5rem 0 1.5rem 3rem;
+            margin: 2.75rem 0 3.5rem;
+        }
+
+        @media (max-width: 560px) {
+            .pull {
+                padding-left: 1.4rem;
+            }
+        }
+
+        .pull blockquote {
+            font-family: var(--serif);
+            font-size: clamp(1.45rem, 3vw, 2.4rem);
+            font-weight: 300;
+            font-style: italic;
+            line-height: 1.3;
+            margin-bottom: 1.25rem;
+        }
+
+        .pull cite {
+            font-size: 0.63rem;
+            font-style: normal;
+            letter-spacing: 0.17em;
+            text-transform: uppercase;
+            color: var(--g65);
+        }
+
+        .ai-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            margin-top: 3rem;
+        }
+
+        @media (max-width: 660px) {
+            .ai-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .ai-c {
+            border: 0.5px solid var(--div);
+            padding: 1.9rem 1.75rem;
+            margin: -0.25px;
+        }
+
+        .ai-c h4 {
+            font-size: 0.73rem;
+            font-weight: 700;
+            letter-spacing: 0.09em;
+            text-transform: uppercase;
+            margin-bottom: 0.7rem;
+        }
+
+        .ai-c p {
+            font-size: 0.85rem;
+            color: var(--g65);
+            line-height: 1.75;
+        }
+
+        /* ═══════════════════════════════════════
+       WHO THIS IS FOR
+    ═══════════════════════════════════════ */
+        .who-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: clamp(3rem, 7vw, 7rem);
+            align-items: start;
+        }
+
+        @media (max-width: 840px) {
+            .who-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .who-body {
+            font-size: clamp(0.92rem, 1.3vw, 1.05rem);
+            line-height: 1.82;
+            color: var(--g65);
+            margin-top: 1.5rem;
+        }
+
+        .who-cards {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+
+        .who-card {
+            display: grid;
+            grid-template-columns: 1.8rem 1fr;
+            gap: 1.5rem;
+            align-items: start;
+            padding: 1.6rem 0;
+            border-bottom: 0.5px solid var(--div);
+        }
+
+        .who-card:first-child {
+            border-top: 0.5px solid var(--div);
+        }
+
+        .who-arrow {
+            font-size: 0.7rem;
+            color: var(--g40);
+            padding-top: 0.15rem;
+        }
+
+        .who-card-body strong {
+            display: block;
+            font-size: 0.82rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            margin-bottom: 0.35rem;
+            color: var(--white);
+        }
+
+        .who-card-body p {
+            font-size: 0.84rem;
+            color: var(--g65);
+            line-height: 1.72;
+        }
+
+        /* ═══════════════════════════════════════
+       FINAL CTA
+    ═══════════════════════════════════════ */
+        #final-cta {
+            text-align: center;
+        }
+
+        .cta-wrap {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .cta-wrap .smeta {
+            justify-content: center;
+        }
+
+        .cta-wrap h2 {
+            font-size: clamp(2.5rem, 5.5vw, 5.5rem);
+            margin-bottom: 1.5rem;
+        }
+
+        .spots {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            border: 0.5px solid var(--div);
+            padding: 0.6rem 1.4rem;
+            margin-bottom: 2.75rem;
+        }
+
+        .dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--white);
+            flex-shrink: 0;
+            animation: pulse 2.4s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                opacity: 1
+            }
+
+            50% {
+                opacity: .2
+            }
+        }
+
+        .spots span {
+            font-size: 0.63rem;
+            letter-spacing: 0.13em;
+            text-transform: uppercase;
+            color: var(--g65);
+        }
+
+        .cta-fine {
+            margin-top: 1.75rem;
+            font-size: 0.68rem;
+            color: var(--g40);
+            letter-spacing: 0.07em;
+        }
+
+        /* ═══════════════════════════════════════
+       FOOTER
+    ═══════════════════════════════════════ */
+        footer {
+            border-top: 0.5px solid var(--div);
+            padding: 2.75rem 0;
+        }
+
+        .foot {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 2rem;
+        }
+
+        @media (max-width: 520px) {
+            .foot {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.55rem;
+            }
+        }
+
+        .foot-brand {
+            font-size: 0.9rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+        }
+
+        .foot-tag {
+            font-size: 0.75rem;
+            color: var(--g65);
+            margin-top: 0.25rem;
+        }
+
+        .foot-copy {
+            font-size: 0.63rem;
+            color: var(--g40);
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        /* ═══════════════════════════════════════
+       SCROLL REVEAL
+    ═══════════════════════════════════════ */
+        .r {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.72s ease, transform 0.72s ease;
+        }
+
+        .r.on {
+            opacity: 1;
+            transform: none;
+        }
+
+        .d1 {
+            transition-delay: 0.08s;
+        }
+
+        .d2 {
+            transition-delay: 0.17s;
+        }
+
+        .d3 {
+            transition-delay: 0.27s;
+        }
+
+        .d4 {
+            transition-delay: 0.38s;
+        }
+
+        .d5 {
+            transition-delay: 0.5s;
+        }
+
+        /* ─── Counter number animation ─── */
+        .count-anim {
+            display: inline;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ══════════ HEADER ══════════ -->
+    <header id="hdr">
+        <div class="hdr">
+            <!-- LOGO: icon mark + wordmark -->
+            <div id="logo">
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABEIAAARCCAYAAACnwld5AAAACXBIWXMAAAsSAAALEgHS3X78AAAgAElEQVR4nOzdzXEbV/r24cfvfxazAyYCNCMwJgKCEUiOAGAEonYzK4IRGBMBwQhMRwAwAtERsJEBsJzdu/BQpmF98APo093PdS0tF3WXFqrSr06f80NEDCNiHAAAAAD9dv+3+D2CrEovAQAAADiys/9XegEAAABAU4QQAAAAIA0hBAAAAEhDCAEAAADSEEIAAACANIQQAAAAIA0hBAAAAEhDCAEAAADSEEIAAACANIQQAAAAIA0hBAAAAEhDCAEAAADSEEIAAACANIQQAAAAIA0hBAAAAEhDCAEAAADSEEIAAACANIQQAAAAIA0hBAAAAEhDCAEAAADSEEIAAACANIQQAAAAIA0hBAAAAEhDCAEAAADSEEIAAACANIQQAAAAIA0hBAAAAEhDCAEAAADSEEIAAACANIQQAAAAIA0hBAAAAEhDCAEAAADSEEIAAACANIQQAAAAIA0hBAAAAEhDCAEAAADSEEIAAACANIQQAAAAIA0hBAAAAEhDCAEAAADSEEIAAACANIQQAAAAIA0hBAAAAEhDCAEAAADSEEIAAACANIQQAAAAIA0hBAAAAEhDCAEAAADSEEIAAACANIQQAAAAIA0hBAAAAEhDCAEAAADSEEIAAACANIQQAAAAIA0hBAAAAEhDCAEAAADSEEIAAACANIQQAAAAIA0hBAAAAEhDCAEAAADSEEIAAACANIQQAAAAIA0hBAAAAEhDCAEAAADSEEIAAACANIQQAAAAIA0hBAAAAEhDCAEAAADSEEIAAACANIQQAAAAIA0hBAAAAEhDCAEAAADSEEIAAACANIQQAAAAIA0hBAAAAEhDCAEAAADSEEIAAACANIQQAAAAIA0hBAAAAEhDCAEAAADSEEIAAACANIQQAAAAIA0hBAAAAEhDCAEAAADSEEIAAACANIQQAAAAIA0hBAAAAEhDCAEAAADSEEIAAACANIQQAAAAIA0hBAAAAEhDCAEAAADSEEIAAACANIQQAAAAIA0hBAAAAEhDCAEAAADSEEIAAACANIQQAAAAIA0hBAAAAEhDCAEAAADSEEIAAACANIQQAAAAIA0hBAAAAEhDCAEAAADSEEIAAACANIQQAAAAIA0hBAAAAEhDCAEAAADSEEIAAACANIQQAAAAIA0hBAAAAEhDCAEAAADSEEIAAACANIQQAAAAIA0hBAAAAEhDCAEAAADSEEIAAACANIQQAAAAIA0hBAAAAEhDCAEAAADSEEIAAACANIQQAAAAIA0hBAAAAEhDCAEAAADSEEIAAACANIQQAAAAIA0hBAAAAEhDCAEAAADSEEIAAACANIQQAAAAIA0hBAAAAEhDCAEAAADSEEIAAACANIQQAAAAIA0hBAAAAEhDCAEAAADSEEIAAACANIQQAAAAIA0hBAAAAEhDCAEAAADSEEIAAACANIQQAAAAIA0hBAAAAEhDCAEAAADSEEIAAACANIQQAAAAIA0hBAAAAEhDCAEAAADSEEIAAACANIQQAAAAIA0hBAAAAEhDCAEAAADSEEIAAACANIQQAAAAIA0hBAAAAEhDCAEAAADSEEIAAACANIQQAAAAIA0hBAAAAEhDCAEAAADSEEIAAACANIQQAAAAIA0hBAAAAEhDCAEAAADSEEIAAACANIQQAAAAIA0hBAAAAEhDCAEAAADSEEIAAACANIQQAAAAIA0hBAAAAEhDCAEAAADSEEIAAACANIQQAAAAIA0hBAAAAEhDCAEAAADSEEIAAACANIQQAAAAIA0hBAAAAEhDCAEAAADSEEIAAACANIQQAAAAIA0hBAAAAEhDCAEAAADSEEIAAACANIQQAAAAIA0hBAAAAEhDCAEAAADSEEIAAACANIQQAAAAIA0hBAAAAEhDCAEAAADSEEIAAACANIQQAAAAIA0hBAAAAEhDCAEAAADSEEIAAACANIQQAAAAIA0hBAAAAEhDCAEAAADSEEIAAACANIQQAAAAIA0hBAAAAEhDCAEAAADSEEIAAACANIQQAAAAIA0hBAAAAEhDCAEAAADSEEIAAACANIQQAAAAIA0hBAAAAEhDCAEAAADSEEIAAACANIQQAAAAIA0hBAAAAEhDCAEAAADSEEIAAACANIQQAAAAIA0hBAAAAEhDCAEAAADSEEIAAACANIQQAKCIqqpiPB6XngEAJCOEAACNms1msV6v4+HhIT59+hTL5TKqqio9CwBI4oeImETEqvAOAKDnZrNZzOfzGI1Gf/m13W4Xi8UiFotFbLfbAusAgCTOnAgBAI5qNptFXddxfX39xQgSETEYDOLy8jLu7+9jNps1OxAASEUIAQCO4jkBZN9oNIrr6+u4v7+PyWRy3IEAQEpCCABwUK8JIPt+/PHHWK1WsV6vBREA4KCEEADgIA4RQPadnp7GarWK29tbF6oCAAchhAAAb3KMALLv3bt38fDw4IUZAODNhBAA4FWaCCD7ptOpIAIAvIkQAgC8SIkAsk8QAQBeSwgBAJ6lDQFknyACALyUEAIAfFMbA8g+QQQAeC4hBAD4oslkEuv1utUBZJ8gAgB8jxACAPzJYwBZrVZxenpaes6rPA0ik8mk9BwAoEWEEAAgIvoRQPZNp9NYrVaxXq8FEQAgIoQQAEivjwFk3+npqSACAESEEAIAaWUIIPsEEQBACAGAZDIGkH2CCADkJYQAQBICyF8JIgCQjxACAD0ngHyfIAIAeQghANBTAsjLCSIA0H9CCAD0jADydoIIAPSXEAIAPSGAHJ4gAgD9I4QAQMcJIMcniABAfwghANBRAkjzBBEA6D4hBAA6RgApTxABgO4SQgCgIwSQ9hFEAKB7hBAAaDkBpP0EEQDoDiEEAFpKAOkeQQQA2k8IAYCWEUC672kQGY/HpecAAE8IIQDQEgJI/5yensanT59iuVxGVVWl5wAAIYQAQHECSP9Np9N4eHgQRACgBYQQAChEAMlHEAGA8oQQAGiYAIIgAgDlCCEA0BABhH2CCAA0TwgBgCMTQPgeQQQAmiOEAMCRCCC8lCACAMcnhADAgQkgvJUgAgDHI4QAwIEIIByaIAIAhyeEAMAbCSAcmyACAIcjhADAKwkgNE0QAYC3E0IA4IUEEEoTRADg9YQQAHgmAYS2EUQA4OWEEAD4DgGEthNEAOD5hBAA+AoBhK4RRADg+4QQANgjgNB1gggAfJ0QAgD/I4DQN4IIAPyVEAJAegIIfSeIAMAfhBAA0hJAyEYQAQAhBICEBBCyE0QAyEwIASANAQT+TBABICMhBIDeE0Dg2wQRADIRQgDoLQEEXkYQASADIQSA3hFA4G0EEQD6TAgBoDcEEDgsQQSAPhJCAOg8AQSOSxABoE+EEAA6SwCBZgkiAPSBEAJA5wggUJYgAkCXCSEAdIYAAu0iiADQRUIIAK0ngEC7CSIAdIkQAkBrCSDQLYIIAF0ghADQOgIIdJsgAkCbCSEAtIYAAv0iiADQRkIIAMUJINBvgggAbSKEAFCMAAK5CCIAtIEQAkDjBBDITRABoCQhBIDGCCDAU4IIACUIIQAcnQACfIsgAkCThBAAjkYAAV5CEAGgCUIIAAcngABvIYgAcExCCAAHI4AAhySIAHAMQggAbyaAAMckiABwSEIIAK8mgABNegwii8UihsNh6TkAdJQQAsCLCSBASR8+fIi6rmM+nwsiALyYEALAswkgQFsMBoO4vLwURAB4MSEEgO8SQIC2ehpEFouFO0QA+C4hBICvEkCArhgMBvHhwweXqgLwXUIIAH8hgABd5pUZAL5FCAHgMwEE6BNBBIAvEUIAEECAXhNEAHhKCAFITAABMhFEAIgQQgBSEkCAzAQRgNyEEIBEBBCAPwgiADkJIQAJCCAAXyeIAOQihAD0mAAC8HyCCEAOQghADwkgAK8niAD0mxAC0CMCCMDhCCIA/SSEAPSAAAJwPIIIQL8IIQAdJoAANEcQAegHIQSggwQQgHIEEYBuE0IAOkQAAWgPQQSgm4QQgA4QQADaSxAB6BYhBKDFBBCA7hBEALpBCAFoIQEEoLsEEYB2E0IAWkQAAegPQQSgnYQQgBYQQAD6SxABaBchBKAgAQQgD0EEoB2EEIACBBCAvAQRgLKEEIAGCSAAPBJEAMoQQgAaIIAA8DWCCECzhBCAIxJAAHguQQSgGUIIwBEIIAC8liACcFxCCMABCSAAHIogAnAcQgjAAQggAByLIAJwWEIIwBsIIAA0RRABOAwhBOAVBBAAShFEAN5GCAF4AQEEgLYQRABeRwgBeAYBBIC2EkQAXkYIAfgGAQSArhBEAJ5HCAH4AgEEgK4SRAC+TQgBeEIAAaAvBBGALxNCAEIAAaC/BBGAPxNCgNQEEACyEEQAfieEACkJIABkJYgA2QkhQCoCCAD87mkQGQ6HpecANEYIAVIQQADgy6bTadR1HYvFwgkRIAUhBOg1AQQAvm8wGMSHDx98MgOkIIQAvSSAAMDruEME6DshBOgVAQQADkMQAfpKCAF6QQABgOMQRIC+EUKAThNAAKAZggjQF0II0EkCCACUIYgAXSeEAJ0igABAOwgiQFcJIUAnCCAA0E5Pg8h4PC49B+C7hBCg1QQQAOiG6XQanz59ivV6HZPJpPQcgK8SQoBWEkAAoJtOT09jtVoJIkBrCSFAqwggANAPggjQVkII0AoCCAD0kyACtI0QAhQ1m82irmsBBAB6ThAB2kIIARo3HA4/B5Dr6+sYjUalJwEADRFEgNJ+iIhJRKwK7wCSGI/HsV6vYzAYlJ4CALTAx48fY7FYlJ4B5HHmRAjQqOFwKIIAAJ8Nh8PSE4BkhBAAAAAgDSEEAAAASEMIAQAAANIQQgAAAIA0hBAAAAAgDSEEAAAASEMIAQAAANIQQgAAAIA0hBAAoDHb7Tbm83kMh8MYj8exWCyiruvSswCARIQQAODoHgNIVVVxdXUVu90ufvvtt/j48WOcnJzEZDKJ5XJZeiYAkIAQAgAczZcCyJfc3d3F+fl5VFUV8/k8ttttw0sBgCyEEADg4J4bQPZtNpu4urr6HER8NgMAHJoQAgAczGsDyL7dbhdXV1dxcnISs9lMEAEADkYIAQDe7FAB5Etubm5iPB77ZAYAOAghBAB4tWMGkKceT4i4QwQAeCshBAB4saYCyD5BBAB4KyEEAHi2UgFknyACALyWEAIAfFdbAsg+QQQAeCkhBAD4qrYGkH2CCADwXEIIAPAXXQkg+wQRAOB7hBAA4LOuBpB9j0FkPB7HcrksPQcAaBEhBADoTQDZt9ls4vz8PKqqEkQAgIgQQgAgtb4GkH1Pg8hisfDJDAAkJoQAQEJZAsi+zWYTHz9+dIcIACQmhABAIlkDyD6XqgJAXkIIACQggHyZIAIA+QghANBjAsjzCCIAkIcQAgA9JIC8jiACAP0nhABAjwgghyGIAEB/CSEA0AMCyHEIIgDQP0IIAHSYANIMQQQA+kMIAYAOEkDKEEQAoPuEEADoEAGkHQQRAOguIQQAOkAAaSdBBAC6RwgBgBYTQLpBEAGA7hBCAKCFBJBuehpELi4uoq7r0pMAgD1CCAC0iADSD7vdLv7zn//EyclJzGYzQQQAWkQIAYAWEED66+bmRhABgBYRQgCgIAEkj8cg4g4RAChLCAGAAgSQvFyqCgBlCSEA0CABhAivzABASUIIADRAAOFLBBEAaJ4QAgBHJIDwHIIIADRHCAGAIxBAeA1BBACOTwgBgAMSQDgEQQQAjkcIAYADEEA4BkEEAA5PCAGANxBAaIIgAgCHI4QAwCsIIJQgiADA2wkhAPACAghtIIgAwOsJIQDwDAIIbSSIAMDLCSEA8A0CCF0giADA8wkhAPAFAghdJIgAwPcJIQDwhABCHwgiAPB1QggAhADStOl0Gg8PD7FareL09LT0nN7aDyJ1XZeeBADFCSEApCaANOsxgCyXy6iqKiaTSazXa0HkyB6DyMnJScxmM0EEgNSEEABSEkCatR9A9gkizbm5uRFEAEhNCAEgFQGkWd8LIPsEkeYIIgBkJYQAkIIA0qyXBpB9gkhzBBEAshFCAOg1AaRZbw0g+wSR5ggiAGQhhADQSwJIsw4dQPY9BpHr6+sYjUYH//n8QRABoO+EEAB6RQBp1rEDyL7Hf5wLIscniADQV0IIAL0ggDSr6QCyTxBpjiACQN8IIQB0mgDSrNIBZJ8g0hxBBIC+EEIA6CQBpFmnp6exWq1aE0D2CSLNEUQA6DohBIBOEUCa9RhA1ut1TCaT0nO+SxBpjiACQFcJIQB0ggDSrK4FkH2CSHMEEQC6RggBoNUEkGZ1PYDsE0SaI4gA0BVCCACtJIA0q28BZN/TIDIYDErP6TVBBIC2E0IAaBUBpFl9DyD7Hv9xfnl5KYgcmSACQFsJIQC0ggDSrGwB5KnhcBjz+VwQaYggwveMx+PSE4BkhBAAihJAmpU5gOwTRJoliPA1w+Gw9AQgGSEEgCIEkGYJIF8niDRLEAGgNCEEgEYJIM0SQJ5PEGmWIAJAKUIIAI0QQJolgLyeINIsQQSApgkhAByVANIsAeRwBJFmCSIANEUIAeAoBJBmCSDHI4g0SxAB4NiEEAAObrlcCiANEUCaI4g062kQ2W63pecA0CNCCAAHdX9/H+fn5wLIkQkg5Qgizbq5uYn7+/vSMwDoESEEgINar9elJ/SaANIegggAdJMQAsBBOcJ+HAJIewkiANAtQggABzUej0tP6BUBpDsEEQDoBiEEgIMaDoelJ/SCANJdgggAtJsQAgAtIoD0hyACAO0khABACwgg/SWIAEC7CCEAUJAAkocgAgDtIIQAQAECSF6PQWS73cb19XWMRqPSkwAgFSEEABokgPDUbDaLuq4FEQBokBACAA0QQPgWQQQAmiOEAMARCSC8hCACAMcnhADAEQggvIUgAgDHI4QAwAEJIBySIAIAhyeEAMABCCAckyACAIcjhADAGwggNEkQAYC3E0IA4BUEEEoSRADg9YQQAHgBAYQ2eQwil5eXMRgMSs8BgE4QQgDgGQQQ2mw+nwsiAPBMQggAfIMAQlcMh0NBBACeQQgBgC8QQOgqQQQAvk0IAYAnBBD6QhABgC8TQgAgBBD6SxABgD8TQgBITQAhC0EEAH4nhACQkgBCVo9B5P7+PqbTaek5ANA4IQSAVAQQ+F1VVbFcLuPh4UEQASAVIQSAFAQQ+DJBBIBshBAAek0AgecRRADIQggBoJcEEHgdQQSAvhNCAOgVAQQOQxABoK+EEAB6QQCB4xBEAOgbIQSAThNAoBmCCAB9IYQA0EkCCJQhiADQdUIIAJ0igEA7CCIAdJUQAkAnCCDQTo9B5NOnT3F6elp6DgB8lxACQKsJINAN4/E41ut1rFYrQQSAVhNCAGglAQS6aTKZCCIAtJoQAkCrCCDQD4IIAG0lhADQCgII9JMgAkDbCCEAFCWAQA6CCABtIYQAUIQAAjkJIgCUJoQA0CgBBIgQRAAoRwgBoBGj0Sh++eUXAQT4E0EEgKYJIQAc1Wg0iuvr66jrOt6/f196DtBSgggATRFCADiKpwFkNpuVngN0xGMQ+fTpU0yn09JzAOghIQSAg6qqSgAB3mw8HsdyuYyHh4eoqqr0HAB65G+lBwDQL1VVCSDAwYggAByaEyEAAABAGkIIAAAAkIYQAgAAAKQhhAAAAABpCCEAAABAGkIIAAAAkIYQAgAAAKQhhAAAAABpCCEAAABAGkIIAAAAkIYQAgAAAKQhhAAAAABpCCEAAABAGkII0Ki6ruPXX38tPQMAaIGbm5uYzWalZwDJCCFAo+q6jvfv38fJyUn85z//id1uV3oSANCwu7u7+Oc//xmz2Szqui49B0hGCAGKqOs6Li4uoqqquLq6EkQAIIG7u7s4OzuLyWQS9/f3pecASf0QEZOIWBXeASQ3HA7j4uIiLi4uYjAYlJ4DABzQb7/9FhcXF7Fer0tPAThzIgRohe12G/P53AkRAOiRzWYT5+fnMR6PRRCgNYQQoFUEEQDovscAUlVVLJfL0nMA/sSnMUCr+WQGALpjt9vFYrGI+XxeegrA15wJIUAnCCIA0F6PAWSxWMR2uy09B+BbhBCgW6qqivl8HtPptPQUACAirq6uBBCgS1yWCnRLXdcxm83i5OQkbm5uSs8BgLRubm7i5OQk5vO5CAJ0ihACdJIgAgBlPAaQ2WwWdV2XngPwYkII0GmCCAA0QwAB+kIIAXpBEAGA4xBAgL4RQoBeEUQA4DAEEKCvhBCglwQRAHgdAQToOyEE6DVBBACeRwABshBCgBQEEQD4MgEEyEYIAVIRRADgdwIIkJUQAqQkiACQ1d3dXZydnQkgQFpCCJCaIAJAFpvNJs7OzmIymcR6vS49B6AYIQQg/ggiZ2dncXd3V3oOABzMbreL8/PzqKpKAAEIIQTgT9brdUwmE0EEgM7b7XZxdXUVVVXFcrksPQegNX6IiElErArvAGilyWQSi8Uifvzxx9JTAODZfv3115jNZrHdbktPAWibMydCAL6iqqqYzWYiCACdM5lMYjablZ4B0EpCCMCexyPEDw8PMZ1OS88BgBcbDAbx888/f74DC4A/CCEA/zMcDmM+n8f9/b0AAkAvjEajuL6+jrqu4/3796XnALSCEAKk9xhA6rqOy8vLGAwGpScBwEGNRqP45ZdfPl8KDpCZEAKkJYAAkM3p6WmsVitBBEhNCAFSuri4EEAASEsQATITQoBUZrNZ1HUdP//8swACQHqPQWS5XEZVVaXnADRCCAFSeAwg19fXMRqNSs8BgFaZTqfx8PAgiAApCCFArwkgAPB8ggiQgRAC9NJkMon7+3sBBABe4TGIzOfzGA6HpecAHJQQAvTKZDKJ9Xodq9Uqfvzxx9JzAKDTLi8vo65rQQToFSEE6IWnAeT09LT0HADojcFgIIgAvSKEAJ02Ho8FEABowH4QAegqIQTopKqqYrlcxqdPnwQQAGjQ0yAym81KzwF4MSEE6JTHAPLw8BDT6bT0HABIazQaxfX1tSACdI4QAnSCAAIA7SSIAF0jhACtNplM4vb2VgABgJZ7DCLr9Tomk0npOQBfJYQArfT0FZh3796VngMAPNPp6WmsVitBBGgtIQRoFc/gAkA/PA0i4/G49ByAz4QQoBVms1nUdS2AAEDPnJ6exqdPn2K5XEZVVaXnAAghQFmPAeT6+jpGo1HpOQDAkUyn03h4eIjFYhHD4bD0HCAxIQRo3HA4FEAAIKkPHz5EXdcxn88FEaCIHyJiEhGrwjuAJMbjcazX6xgMBqWnAACF7Xa7GI/HUdd16SlAHmdOhACNGg6HIggAEBERg8HAvSFA44QQAAAAIA0hBAAAKGYymZSeACQjhAAAAABpCCEAAABAGkIIAAAAkIYQAgAAAKQhhAAAAABpCCEAQOO2220sl8vYbrelpwAAyQghAEBjttttzOfzqKoqzs/P4x//+EfMZrOo67r0NAAgCSEEADi6pwHk6uoqdrvd51+7ubmJk5MTQQQAaIQQAgAczbcCyD5BBABoghACABxcXdcxm82eFUD2PQaRyWQS6/X6eCMBgJSEEADgYB4DyMnJSdzc3LwogOy7u7uLs7MzQQQAOCghBAB4s/0AckhPg8jt7e1BfzYAkI8QAgC82jEDyL67u7v46aefoqqqWC6XR/29AID+EkIAgBdbr9cxmUwaCSD7NptNnJ+fCyIAwKsIIQDAsz0GkLOzs7i7uyu65WkQcYcIAPBcQggA8F1tCiD7NpuNS1UBgGcTQgCAr2pzANnnlRkA4DmEEADgL7oUQPYJIgDAtwghAMBnXQ4g+wQRAOBLhBAAoFcBZJ8gAgA8JYQAQGJ9DiD7BBEAIEIIAYCUlstlVFWVIoDsE0QAIDchBAASeQwg5+fnsdlsSs8p6jGIjMfjWC6XpecAAA0RQgAgAQHk63777bc4Pz+PqqoEEQBIQAgBgB4TQJ5vs9kIIgCQgBACAD0kgLyeIAIA/SaEAECPCCCHI4gAQD8JIQDQAwLI8TwNIl6ZAYDuE0IAoMMEkOZsNhvP7gJADwghANBBAkg5j8/uCiIA0E1CCAB0iADSHoIIAHSTEAIAHSCAtJcgAgDdIoQAQIsJIN0hiABANwghANBCAkh3CSIA0G5CCAC0iADSH4IIALSTEAIALSCA9JcgAgDtIoQAQEECSB6CCAC0gxACAAUIIHkJIgBQlhACAA0SQHgkiABAGUIIADRAAOFrBBEAaJYQAgBHJIDwXIIIADRDCAGAIxBAeC1BBACOSwgBgAMSQDgUQQQAjkMIAYADEEA4FkEEAA5LCAGANxBAaIogAgCHIYQAwCsIIJTyNIgsl8vScwCgc4QQAHgBAYS2uLu7i/Pz86iqShABgBcQQgDgGQQQ2mqz2QgiAPACQggAfIMAQlcIIgDwPEIIAHyBAEJXCSIA8G1CCAA8IYDQF4IIAHyZEAIAIYA0aTqdxmq1ioeHh1itVvHhw4cYjUalZ/WWIAIAfyaEAJCaANKc6XQaDw8PsVwuYzKZRFVVMZlMYrFYRF3XcX19HYPBoPTM3hJEAOB3QggAKQkgzXkaQKqq+ur/N5vNoq7ruLy8FESOSBABIDshBIBUBJDmPDeAPDUcDmM+nwsiDRBEaIvn/v0AcChCCAApCCDNeU0A2SeINOdpEJnP57HdbktPIhkhBGiaEAJArwkgzTlEANkniDRns9nE1dWVIAJA7wkhAPSSANKc09PTWK1WBw0g+wSR5ux2O0EEgF4TQgDoFQGkOY8BZL1ex2QyaeT3FESaI4gA0FdCCAC9IIA0p0QA2fc0iEyn0yIbshBEAOgbIQSAThNAmtOGALJvOBzGcrmMh4cHQeTIBBEA+kIIAaCTBJDmtDGA7Ht8AlYQOT5BBICuE0IA6BQBpDldCCD7BJHmCCIAdJUQAkAnCCDN6WIA2SeINEcQAaBrhBAAWk0AaU4fAsg+QaQ5gr6DYrkAABWeSURBVAgAXSGEANBKAkhz+hhA9gkizRFEAGg7IQSAVhFAmpMhgOwTRJojiADQVkIIAK0ggDQnYwDZJ4g0RxABoG2EEACKEkCaMxqN4vr6OnUA2SeINEcQAaAthBAAihBAmvMYQOq6jtlsVnpOKwkizXkMIuPxOJbLZek5ACQkhADQKAGkOQLIyz0NIu/evSs9p9c2m02cn59//jMHgKYIIQA0QgBpjgDydlVVxe3tbXz69MkJkSMTRABomhACwNFst9tYLBYCSEMEkMN7/HzDJzPH9zSILBYLd4gAcDRCCAAHt91uYz6fR1VV8fHjRwHkyASQ43OHSHM2m018/PgxqqqK2WwWt7e3pScB0DNCCAAHdX9/H1VVxdXVVex2u9Jzek0AaZ4g0pzdbhc3Nzfx008/xXq9Lj0HgB4RQgA4qO12K4AcmQBSniACAN0lhABARwgg7SOIAED3CCEA0HICSPsJIgDQHUIIALSUANI9gggAtJ8QAgAtMxgM4ueffxZAOkwQAYD2EkIAOKjhcFh6QmcNBoO4vLyMuq7j4uKi9BwOQBABgPYRQgA4qPF4XHpC5zwNIPP5XEzqIUEEANpDCAGAQgSQfAQRAChPCAGAhgkgCCIAUI4QAgANEUDYJ4gAQPOEEAA4MgGE73kMIqvVKk5PT0vPAYBeE0IA4EgEEF5qMpnEer0WRADgiIQQADgwAYS3EkQA4HiEEAA4EAGEQxNEAODwhBAAeCMBhGMTRADgcIQQAHglAYSmCSIA8HZCCAC8kABCaYIIALyeEAIAzySA0DaCCAC8nBACAN8hgNB2gggAPJ8QAgBfIYDQNYIIAHyfEAIAewQQuk4QAYCvE0IA4H8EEPpGEAGAvxJCAEhPAKHvBBEA+IMQAkBaAgjZCCIAIIQAkJAAQnaCCACZCSEApCGAwJ89BpFffvklRqNR6TkA0AghBIDeE0Dg296/fx91Xcf19bUgAkDvCSEA9JYAAi8zm80EEQB6TwgBoHcEEHgbQQSAPhNCAOgNAQQOSxABoI+EEAA6TwCB4xJEAOgTIQSAzhJAoFmPQcSzuwB0mRACQOcIIFDW47O7gggAXSSEANAZAgi0iyACQBcJIQC03mg0ip9//lkAgZYSRADoEiEEgNYajUZxfX0ddV3HxcWFAAItJ4gA0AVCCACt8zSAzGaz0nOAFxJEAGgzIQSA1hBAoF8EEQDaSAgBoDgBBPpNEAGgTYQQAIoRQCCXp0Hk3bt3pecAkJQQAkDjBBDIbTKZxO3tbTw8PMR0Oi09B4BkhBAAGjMYDAQQ4LOqqmK5XAoiADRKCAHg6AaDQVxeXgogwBc9DSI+mQHg2IQQAI7maQCZz+cxHA5LTwJarKqquL29dYcIAEf1t9IDAOifd+/exfv3753+AF5lMpnEZDKJuq7j9vZWRAXgoIQQAA7u9va29ASgB6qqiouLi9IzAOgZn8YAAAAAaQghAAAAQBpCCAAAAJCGEAIAAACkIYQAAAAAaQghAAAAQBpCCAAAAJCGEAIAAACkIYQAAAAAaQghAAAAQBpCCAAAAJCGEAIAAACkIYQAAADF1HVdegKQzP9FRBURs7IzgCy2223897//jX/+85/x97//vfQcAKCQ3W4X//73v+Nf//pX6SlALjc/RMQkIlaFhwDJDIfDuLi4iIuLixgMBqXnAAAN+vXXX2M2m8V2uy09BcjnzKcxQBHb7Tbm83lUVRVXV1ex2+1KTwIAjmyz2cRPP/0U79+/F0GAYoQQoKinQeTjx4+x2WxKTwIADmyz2cT5+XlUVRW3t7el5wDJCSFAK2y321gsFlFVVZyfnwsiANADTwPIcrksPQcgIoQQoIWWy6UgAgAdJoAAbSaEAK0liABAtwggQBcIIUDrCSIA0G4CCNAlQgjQGYIIALTLbreLq6urGI/HAgjQGUII0DmCCACU9RhAqqqK+XzuKVygU4QQoLMEEQBolgAC9IEQAnSeIAIAxyWAAH0ihAC9IYgAwGEJIEAfCSFA7wgiAPA2AgjQZ0II0FuCCAC8jAACZCCEAL0niADAtwkgQCZCCJCGIAIAfyWAANkIIUA6T4PIbrcrPQcAiri5uYmTkxMBBEhHCAHSegwiV1dXgggAaTwGkNlsFnVdl54D0LgfImISEavCOwCKGg6HcXFxERcXFzEYDErPAYCDu7u7Ez8AIs6cCAGIiO12G/P53AkRAHrn7u4uzs7OYjKZiCAA4dMYgD8RRADoi6cBZL1el54D0Bo+jQH4hsdPZi4vL0tPAYBnOz8/j+VyWXoGQBv5NAbgW8bjcUwmk9IzAODZdrudT2AAvkEIAfiCx2PEq9UqTk9PS88BgGcbDAaxWq1ivV6L+QBfIIQAPFFVVSyXSwEEgM47PT2N1Wr1+bl4AH4nhADEHwHk4eEhptNp6TkAcDDT6TQeHh5iuVzGcDgsPQegOCEESG04HMZ8Po/7+3sBBIBem06nUdd1zOdzQQRIzasxQEqPr8FcXFzEYDAoPQcAGrXb7WKxWMRisYjtdlt6DkCTzoQQIJ3ZbBbz+TxGo1HpKQBQlCACJOT5XCCP2WwWdV3H9fW1CAIA8fsLM5eXlz6ZAVIRQoDeE0AA4NsEESATIQToLQEEAF5GEAEyEEKA3hFAAOBtBBGgz4QQoDcEEAA4LEEE6CMhBOg8AQQAjksQAfpECAE6SwABgGbtBxGALhJCgM4RQACgrKdBZDablZ4D8CJCCNAZAggAtMtoNIrr62tBBOgUIQRoPQEEANrtMYjc39/HZDIpPQfgm4QQoLUEEADolh9//DFWq1Ws12tBBGgtIQRoHQEEALrt9PT0cxCpqqr0HIA/EUKA1hBAAKBfTk9P4+HhIZbLpSACtIYQAhQngABAv02n089BZDgclp4DJCeEAMUIIACQy3Q6jbquYz6fCyJAMUII0DgBBADyGgwGcXl5KYgAxfwQEZOIWBXeASQxmUxitfJXDgDwu19//TXev39fegaQx5kTIQAAQDFOhABNE0IAAACANIQQAAAAIA0hBAAAAEhDCAEAAIqp67r0BCAZIQQAAChGCAGaJoQAAAAAaQghAAAAQBpCCADQuM1mE3d3d6VnAAAJCSEAQGM2m02cn59HVVUxmUzi7Owsbm5uSs8CABIRQgCAo3saQJbL5ef/vl6vYzabxcnJiSACADRCCAEAjuZrAWRfXdd/CiK73a65kQBAKkIIAHBwzw0g+x6DSFVVcXV1JYgAAAcnhAAAB/PaALJvu93GfD4XRACAgxNCAIA3O1QA2fcYRIbDYZyfn8dmsznYzwYAchJCAIBXO1YA+ZLlchlVVQkiAMCbCCEAwIs1GUD2CSIAwFsIIQDAs5UMIPsEEQDgNYQQAOC72hRA9gkiAMBLCCEAwFe1OYDsE0QAgOcQQgCAv+hSANkniAAA3yKEAACfdTmA7BNEAIAvEUIAgF4FkH2CCADwlBACAIn1OYDsE0QAgAghBABSyhRA9gkiAJCbEAIAiWQOIPsEEQDISQgBgAQEkK8TRAAgFyEEAHpMAHk+QQQAchBCAKCHBJDXE0QAoN+EEADoEQHkcAQRAOgnIQQAekAAOR5BBAD6RQgBgA4TQJojiABAPwghANBBAkg5T4PIb7/9VnoOAPBCQggAdIgA0h7L5TLG43GcnZ3F3d1d6TkAwDMJIQDQAQJIe63X65hMJoIIAHSEEALw/9u5uxs1szSMoqelCYDKADKoEOwM7AwgkyITyMCOYEwGdgaQAWQwF62SPJK75R+o74O9VgTP3ZG2dF6YscPhMD5+/CiA3AFBBADugxACADN0OBzG+/fvx7t378anT5+mnsMvEEQAYN6EEACYke8DyJcvX6aewx8QRABgnoQQAJgBAeRxCSIAMC9CCABMSADpEEQAYB6EEACYgADSJYgAwLSEEAB4QwIIrwQRAJiGEAIAb0AA4Z+8BpHVajX2+/3UcwDg4QkhAHBDAgg/63g8jvV6LYgAwI0JIQBwAwIIv0sQAYDbEkIA4IoEEK5FEAGA2xBCAOAKBBBuRRABgOsSQgDgD+z3+7FarQQQbk4QAYDrEEIA4De8BpD1ej2Ox+PUcwgRRADgzwghAPALBBDmQhABgN8jhADATxBAmCtBBAB+jRACAP9CAOFevAaRp6ensd1ux+VymXoSAMySEAIAPyCAcK/O5/N4eXkZy+VSEAGAHxBCAOA7AgiPQhABgB8TQgBgCCA8LkEEAP6fEAJAmgBChSACAH8TQgBIEkCoEkQAqBNCAEgRQOBvgggAVUIIAAkCCPyYIAJAjRACwEMTQODnCCIAVAghADwkAQR+z2sQWSwWY7PZjNPpNPUkALgqIQSAhyKAwPXsdruxXC4FEQAeihACwEMQQOB2BBEAHokQAsDdulwuY7vdjqenJwEE3oAgAsAjEEIAuDuvAWS5XI6Xl5dxPp+nngQpgggA90wIAeBuCCAwL4IIAPdICAFg9gQQmDdBBIB7IoQAMFsCCNwXQQSAeyCEADA7AgjcN0EEgDkTQgCYjdPpJIDAAxFEAJgjIQSAyZ1Op7HZbAQQeFCCCABzIoQAMJnvA8hut5t6DnBjgggAcyCEAPDmLpeLAAJhgggAUxJCAHgz3x9BFUCA1yCy3W7H5XKZeg4AEUIIAG/CEVTgn7y8vAgiALwZIQSAm9rv92O1WgkgwL86n8+CCABvQggB4CY+f/48VqvVWK/X43g8Tj0HuBOvQWSxWIzNZjO+ffs29SQAHowQAsDVbTab8eHDBwEE+CO73W48Pz9PPQOAByOEAHB1AggAAHMlhAAAAAAZQggAAACQIYQAAAAAGUIIAAAAkCGEAAAAABlCCAAAAJAhhAAAAAAZQggAAACQIYQAAAAAGUIIAAAAkCGEAAAAABlCCAAAAJAhhAAAAAAZQggAAACQIYQAAAAAGUIIAAAAkCGEAAAAABlCCAAAAJAhhAAAAAAZQggAAACQIYQAAAAAGUIIAAAAkCGEAAAAABlCCAAAAJAhhAAAAAAZQggAAACQIYQAAAAAGUIIAAAAkCGEAAAAABlCCAAAAJAhhAAAAAAZQggAAACQIYQAAAAAGUIIAAAAkCGEAAAAABlCCAAAAJAhhAAAAAAZQggAAACQIYQAAAAAGUIIAAAAkCGEAAAAABlCCAAAAJAhhAAAAAAZQggAAACQIYQAAAAAGUIIAAAAkCGEAAAAABlCCAAAAJAhhAAAAAAZQggAAACQIYQAAAAAGUIIAAAAkCGEAAAAABlCCAAAAJAhhAAAAAAZQggAAACQIYQAAACTeX5+nnoCECOEAAAAk1ksFlNPAGKEEAAAACBDCAEAAAAyhBAAAAAgQwgBAAAAMoQQAAAAIEMIAQAAADKEEAAAACBDCAEAAAAyhBAAAAAg4z9TDwBazufzOBwOU8/gxs7n89QTgAfi3XhsX79+nXoCEPPXGOPdGOO/E+8AAAAAuLX3vsYAAAAAGUIIAAAAkCGEAAAAABlCCAAAAJAhhAAAAAAZQggAAACQIYQAAAAAGUIIAAAAkCGEAAAAABlCCAAAAJAhhAAAAAAZQggAAACQIYQAAAAAGUIIAAAAkCGEAAAAABlCCAAAAJAhhAAAAAAZQggAAACQIYQAAAAAGUIIAAAAkCGEAAAAABlCCAAAAJAhhAAAAAAZQggAAACQIYQAAAAAGUIIAAAAkCGEAAAAABlCCAAAAJAhhAAAAAAZQggAAACQIYQAAAAAGUIIAAAAkCGEAAAAABlCCAAAAJAhhAAAAAAZQggAAACQIYQAAAAAGUIIAAAAkCGEAAAAABlCCAAAAJAhhAAAAAAZQggAAACQIYQAAAAAGUIIAAAAkCGEAAAAABlCCAAAAJAhhAAAAAAZQggAAACQIYQAAAAAGUIIAAAAkCGEAAAAABlCCAAAAJAhhAAAAAAZQggAAACQIYQAAAAAGUIIAAAAkCGEAAAAABlCCAAAAJAhhAAAAAAZQggAAACQIYQAAAAAGUIIAAAAkCGEAAAAABlCCAAAAJAhhAAAAAAZQggAAACQIYQAAAAAGUIIAAAAkCGEAAAAABlCCAAAAJAhhAAAAAAZQggAAACQIYQAAAAAGUIIAAAAkCGEAAAAABlCCAAAAJAhhAAAAAAZQggAAACQIYQAAAAAGUIIAAAAkCGEAAAAABlCCAAAAJAhhAAAAAAZQggAAACQIYQAAAAAGUIIAAAAkCGEAAAAABlCCAAAAJAhhAAAAAAZQggAAACQIYQAAAAAGUIIAAAAkCGEAAAAABlCCAAAAJAhhAAAAAAZQggAAACQIYQAAAAAGUIIAAAAkCGEAAAAABlCCAAAAJAhhAAAAAAZQggAAACQIYQAAAAAGUIIAAAAkCGEAAAAABlCCAAAAJAhhAAAAAAZQggAAACQIYQAAAAAGUIIAAAAkCGEAAAAABlCCAAAAJAhhAAAAAAZQggAAACQIYQAAAAAGUIIAAAAkCGEAAAAABlCCAAAAJAhhAAAAAAZQggAAACQIYQAAAAAGUIIAAAAkCGEAAAAABlCCAAAAJAhhAAAAAAZQggAAACQIYQAAAAAGUIIAAAAkCGEAAAAABlCCAAAAJAhhAAAAAAZQggAAACQIYQAAAAAGUIIAAAAkCGEAAAAABlCCAAAAJAhhAAAAAAZQggAAACQIYQAAAAAGUIIAAAAkCGEAAAAABlCCAAAAJAhhAAAAAAZQggAAACQIYQAAAAAGUIIAAAAkCGEAAAAABlCCAAAAJAhhAAAAAAZQggAAACQIYQAAAAAGUIIAAAAkCGEAAAAABlCCAAAAJAhhAAAAAAZQggAAACQIYQAAAAAGUIIAAAAkCGEAAAAABlCCAAAAJAhhAAAAAAZQggAAACQIYQAAAAAGUIIAAAAkCGEAAAAABlCCAAAAJAhhAAAAAAZQggAAACQIYQAAAAAGUIIAAAAkCGEAAAAABlCCAAAAJAhhAAAAAAZQggAAACQIYQAAAAAGUIIAAAAkCGEAAAAABlCCAAAAJAhhAAAAAAZQggAAACQIYQAAAAAGUIIAAAAkCGEAAAAABlCCAAAAJAhhAAAAAAZQggAAACQIYQAAAAAGUIIAAAAkCGEAAAAABlCCAAAAJAhhAAAAAAZQggAAACQIYQAAAAAGUIIAAAAkCGEAAAAABlCCAAAAJAhhAAAAAAZQggAAACQIYQAAAAAGUIIAAAAkCGEAAAAABlCCAAAAJAhhAAAAAAZQggAAACQIYQAAAAAGUIIAAAAkCGEAAAAABlCCAAAAJAhhAAAAAAZQggAAACQIYQAAAAAGUIIAAAAkCGEAAAAABlCCAAAAJAhhAAAAAAZQggAAACQIYQAAAAAGUIIAAAAkCGEAAAAABl/jTEWY4znqYcAAAAA3NjX/wEvdZ2X9lwcCwAAAABJRU5ErkJggg==" alt="ArhStack icon" />
+                <span>ArhStack</span>
+            </div>
+            <button class="hdr-btn" onclick="document.getElementById('final-cta').scrollIntoView({behavior:'smooth'})">
+                Book Audit
+            </button>
+        </div>
+    </header>
+
+
+    <!-- ══════════ HERO ══════════ -->
+    <section id="hero">
+        <div class="wrap">
+            <div class="hero-body">
+
+                <div class="hero-tag">
+                    <span class="hero-tag-dash"></span>
+                    <span>Startup Risk Audit</span>
+                </div>
+
+                <h1 class="hero-hl" id="hero-hl">
+                    <span class="line"><span class="line-inner">You may be building</span></span>
+                    <span class="line"><span class="line-inner">on incorrect assumptions</span></span>
+                    <span class="line"><span class="line-inner"><em>you haven't yet discovered.</em></span></span>
+                </h1>
+
+                <p class="hero-sub" id="hero-sub">
+                    ArhStack identifies the gaps in your business thinking
+                    before they cost you 6&nbsp;months and everything you built.
+                </p>
+
+                <div class="hero-cta-wrap" id="hero-cta">
+                    <button class="btn" onclick="document.getElementById('final-cta').scrollIntoView({behavior:'smooth'})">
+                        Get Your Startup Risk Audit
+                    </button>
+                </div>
+
+                <div class="hero-note" id="hero-note">
+                    <span class="hero-note-dash"></span>
+                    <span>No pitch. No upsell. One conversation.</span>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ══════════ PROBLEM ══════════ -->
+    <section id="problem">
+        <div class="wrap">
+
+            <div class="smeta r">
+                <span class="smeta-n">01</span>
+                <span class="smeta-dash"></span>
+                <span class="smeta-lbl">The Problem</span>
+            </div>
+
+            <div class="prob-intro">
+                <h2 class="r">Most founders validate<br />the <em>wrong things.</em></h2>
+                <div class="prob-copy">
+                    <p class="bt r d1">You validate customer interest and product functionality. That feels like enough. It isn't.</p>
+                    <p class="bt r d2">The assumptions you miss — market dynamics, distribution reality, pricing strategy, competitive positioning, business model sustainability — those are the ones that quietly collapse everything you've built.</p>
+                    <p class="bt r d3">Most founders validate 8–12 points out of the 35 that actually matter. That gap is where businesses fail.</p>
+                </div>
+            </div>
+
+            <div class="big-stat r">
+                <div class="stat-fig" id="stat-fig">0%</div>
+                <div class="stat-copy">
+                    <strong>of startups fail due to wrong assumptions, not execution.</strong>
+                    <p>The founders weren't lazy. They weren't unskilled. They were working on the wrong foundation — and didn't know it. That's the only kind of failure that is fully preventable.</p>
+                </div>
+            </div>
+
+            <p class="miss-lbl r">What founders consistently overlook:</p>
+
+            <div class="miss-grid">
+                <div class="miss-card r">
+                    <span class="miss-n">01</span>
+                    <h4>Market Dynamics</h4>
+                    <p>The forces shaping your market right now — timing, tailwinds, consolidation — and whether your entry point is viable.</p>
+                </div>
+                <div class="miss-card r d1">
+                    <span class="miss-n">02</span>
+                    <h4>Distribution Reality</h4>
+                    <p>How your customers actually discover and buy things in this category. Not how you think they do.</p>
+                </div>
+                <div class="miss-card r d2">
+                    <span class="miss-n">03</span>
+                    <h4>Pricing Strategy</h4>
+                    <p>Whether your intended price is coherent with what buyers in this space believe they're purchasing.</p>
+                </div>
+                <div class="miss-card r d3">
+                    <span class="miss-n">04</span>
+                    <h4>Competitive Positioning</h4>
+                    <p>What you're actually competing against — including inaction — and where you can realistically win.</p>
+                </div>
+                <div class="miss-card r d4">
+                    <span class="miss-n">05</span>
+                    <h4>Business Model Fit</h4>
+                    <p>Whether how you make money is structurally compatible with the behaviour of your intended customers.</p>
+                </div>
+                <div class="miss-card r d5">
+                    <span class="miss-n">06</span>
+                    <h4>Founder–Market Fit</h4>
+                    <p>Whether you have the credibility, access, and insight to win in this particular market at this moment.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- ══════════ AUDIT ══════════ -->
+    <section id="audit">
+        <div class="wrap">
+
+            <div class="smeta r">
+                <span class="smeta-n">02</span>
+                <span class="smeta-dash"></span>
+                <span class="smeta-lbl">What Is a Startup Risk Audit</span>
+            </div>
+
+            <div class="audit-grid">
+                <div class="audit-l">
+                    <h3 class="r">Not a framework.<br />Not a tool.<br /><em>A conversation.</em></h3>
+                    <p class="bt r d1" style="margin-top:1.75rem;">In 60 to 90 minutes, we map the assumption architecture behind your business — the beliefs you're operating on, the ones you haven't tested, and the ones that could break everything.</p>
+                    <p class="bt r d2">We work across seven domains. We ask the questions founders don't ask themselves, because they're too close to the work.</p>
+                    <div class="domains r d3">
+                        <span class="dom">Market</span>
+                        <span class="dom">Customer</span>
+                        <span class="dom">Distribution</span>
+                        <span class="dom">Pricing</span>
+                        <span class="dom">Competition</span>
+                        <span class="dom">Business Model</span>
+                        <span class="dom">Founder Fit</span>
+                    </div>
+                    <div class="audit-nums r d4">
+                        <div class="an"><span class="fig">60–90</span><span class="lbl">Minutes, 1-on-1</span></div>
+                        <div class="an"><span class="fig">7</span><span class="lbl">Domains mapped</span></div>
+                        <div class="an"><span class="fig">3</span><span class="lbl">Critical gaps</span></div>
+                    </div>
+                </div>
+
+                <div class="r d1">
+                    <p class="dlv-head">What you walk away with</p>
+                    <ul class="dlv-list">
+                        <li>
+                            <span class="dlv-n">01</span>
+                            <div class="dlv-b">
+                                <strong>Your 3 most critical assumption gaps</strong>
+                                <p>Identified and ranked by likelihood to derail your business. Specific to you — not a generic checklist.</p>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="dlv-n">02</span>
+                            <div class="dlv-b">
+                                <strong>3 specific tests to run this week</strong>
+                                <p>Concrete experiments executable in days. Validate or invalidate each critical assumption before you build further.</p>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="dlv-n">03</span>
+                            <div class="dlv-b">
+                                <strong>A written summary after the call</strong>
+                                <p>A structured document sent post-session. Yours to keep, reference, and act on.</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- ══════════ WHY NOT AI ══════════ -->
+    <section id="why-not-ai">
+        <div class="wrap">
+
+            <div class="smeta r">
+                <span class="smeta-n">03</span>
+                <span class="smeta-dash"></span>
+                <span class="smeta-lbl">Why Not AI</span>
+            </div>
+
+            <div class="pull r">
+                <blockquote>"AI validates your idea.<br />ArhStack validates your thinking.<br />Those are completely different things."</blockquote>
+                <cite>— ArhStack</cite>
+            </div>
+
+            <p class="bt r" style="max-width:600px;">AI reflects your assumptions back at you, organised. It cannot challenge you, notice when you're being defensive, or ask the one question that changes everything. It only works within the framing you provide — which is exactly the problem.</p>
+            <p class="bt r d1" style="max-width:600px; margin-top:1.2rem;">Our pattern library is built from private, real founder conversations. That data doesn't exist anywhere online — and it never will.</p>
+
+            <div class="ai-grid">
+                <div class="ai-c r">
+                    <h4>AI gives you back what you put in</h4>
+                    <p>Every conversation starts with your framing. It works only within the assumptions you already bring — precisely the problem.</p>
+                </div>
+                <div class="ai-c r d1">
+                    <h4>It cannot notice what you're avoiding</h4>
+                    <p>When founders skip a topic or give a thin answer, that hesitation is data. AI doesn't catch it. A skilled auditor does.</p>
+                </div>
+                <div class="ai-c r d2">
+                    <h4>Our pattern library doesn't exist online</h4>
+                    <p>Built from real private founder conversations — the unfiltered thinking behind real decisions. Not in any training set.</p>
+                </div>
+                <div class="ai-c r d3">
+                    <h4>Validation is a human process</h4>
+                    <p>You're not validating a document. You're being challenged to think differently. That requires another mind in the room.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- ══════════ WHO THIS IS FOR ══════════ -->
+    <section id="who">
+        <div class="wrap">
+
+            <div class="smeta r">
+                <span class="smeta-n">04</span>
+                <span class="smeta-dash"></span>
+                <span class="smeta-lbl">Who This Is For</span>
+            </div>
+
+            <div class="who-grid">
+                <div>
+                    <h3 class="r">Built for founders<br />who are <em>actively<br />building.</em></h3>
+                    <p class="who-body r d1">You have a direction. You're making real decisions. You're not sure if the foundation beneath those decisions is sound — and you're serious enough to find out.</p>
+                </div>
+
+                <div class="who-cards">
+                    <div class="who-card r">
+                        <span class="who-arrow">→</span>
+                        <div class="who-card-body">
+                            <strong>Pre-launch to early MVP</strong>
+                            <p>You're in the window where every assumption you don't test is a risk you're quietly carrying into your build.</p>
+                        </div>
+                    </div>
+                    <div class="who-card r d1">
+                        <span class="who-arrow">→</span>
+                        <div class="who-card-body">
+                            <strong>Building a defined product or service</strong>
+                            <p>You have a concrete direction and a target market. The question is whether your beliefs about that market hold up.</p>
+                        </div>
+                    </div>
+                    <div class="who-card r d2">
+                        <span class="who-arrow">→</span>
+                        <div class="who-card-body">
+                            <strong>Operating without a formal advisory structure</strong>
+                            <p>No investor board. No full-time advisors. The people around you are supportive, not challenging. That's the gap this fills.</p>
+                        </div>
+                    </div>
+                    <div class="who-card r d3">
+                        <span class="who-arrow">→</span>
+                        <div class="who-card-body">
+                            <strong>Willing to be genuinely challenged</strong>
+                            <p>Not looking for validation. Looking for clarity. You want to know what's actually true before you find out the hard way.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- ══════════ FINAL CTA ══════════ -->
+    <section id="final-cta">
+        <div class="wrap">
+            <div class="cta-wrap">
+
+                <div class="smeta r" style="justify-content:center;">
+                    <span class="smeta-n">05</span>
+                    <span class="smeta-dash"></span>
+                    <span class="smeta-lbl">Reserve Your Spot</span>
+                </div>
+
+                <h2 class="r" style="margin-bottom:1.5rem;">
+                    Stop building on<br /><em>assumptions you haven't tested.</em>
+                </h2>
+
+                <p class="bt r d1" style="margin-bottom:2.75rem;">
+                    One conversation. A clear map of where your thinking holds — and where it doesn't. Specific tests to run immediately. Written and sent to you after.
+                </p>
+
+                <div class="r d2" style="margin-bottom:2.75rem;">
+                    <div class="spots">
+                        <span class="dot"></span>
+                        <span>Limited spots available — book to confirm yours</span>
+                    </div>
+                </div>
+
+                <div class="r d3">
+                    <button class="btn" onclick="document.getElementById('final-cta').scrollIntoView({behavior:'smooth'})">
+                        Book Your Audit
+                    </button>
+                </div>
+
+                <p class="cta-fine r d4">
+                    60–90 minutes &nbsp;·&nbsp; One-on-one &nbsp;·&nbsp; Written summary after &nbsp;·&nbsp; No pitch
+                </p>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ══════════ FOOTER ══════════ -->
+    <footer>
+        <div class="wrap">
+            <div class="foot">
+                <div>
+                    <div class="foot-brand">ArhStack</div>
+                    <div class="foot-tag">Helping founders think clearer, build smarter.</div>
+                </div>
+                <div class="foot-copy">© <span id="yr"></span> ArhStack</div>
+            </div>
+        </div>
+    </footer>
+
+
+    <script>
+        /* ── Year ── */
+        document.getElementById('yr').textContent = new Date().getFullYear();
+
+        /* ── Header border on scroll ── */
+        const hdr = document.getElementById('hdr');
+        window.addEventListener('scroll', () => {
+            hdr.classList.toggle('scrolled', window.scrollY > 50);
+        }, {
+            passive: true
+        });
+
+        /* ── Hero entrance animations ── */
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.getElementById('hero-hl').classList.add('active');
+                document.getElementById('hero-sub').classList.add('active');
+                document.getElementById('hero-cta').classList.add('active');
+                document.getElementById('hero-note').classList.add('active');
+            }, 180);
+        });
+
+        /* ── Scroll reveal ── */
+        const io = new IntersectionObserver((entries) => {
+            entries.forEach(e => {
+                if (e.isIntersecting) {
+                    e.target.classList.add('on');
+                    io.unobserve(e.target);
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -30px 0px'
+        });
+
+        document.querySelectorAll('.r').forEach(el => io.observe(el));
+
+        /* ── Stat counter: counts up to 70 when visible ── */
+        const statEl = document.getElementById('stat-fig');
+        let counted = false;
+        const statObs = new IntersectionObserver((entries) => {
+            if (entries[0].isIntersecting && !counted) {
+                counted = true;
+                let start = 0;
+                const end = 70;
+                const dur = 1600;
+                const step = dur / end;
+                const timer = setInterval(() => {
+                    start++;
+                    statEl.textContent = start + '%';
+                    if (start >= end) clearInterval(timer);
+                }, step);
+            }
+        }, {
+            threshold: 0.4
+        });
+        statObs.observe(statEl);
+    </script>
+
+</body>
+
+</html>
